@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter Project 9</title>
+</head>
+<body>
+    <div class="output">
+        <h1>Hello</h1>
+        <div>Test</div>
+        <ul>
+            <li id="one">One</li>
+            <li class="red">Two</li>
+        </ul>
+        <div>Test</div>
+    </div>
+    <script>
+        const elementOutput = document.querySelector(".output");
+        const mainList = document.querySelector("ul");
+        mainList.id = ("MainList");
+        const searchDiv = document.querySelectorAll("div");
+        searchDiv.forEach((element, index) => {
+            console.log(index,element.firstChild.textContent);
+        });
+    </script>
+</body>
+</html>
