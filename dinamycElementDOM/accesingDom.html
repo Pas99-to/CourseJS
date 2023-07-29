@@ -11,5 +11,63 @@
     <div id="one" class="example">Hi!</div>
     <div id="two" class="example">Hi!</div>
     <div id="three" class="something">Hi!</div>
+    <div id="four">
+        <ul>
+            <li>Example</li>
+            <li>DOM</li>
+            <li>ID</li>
+        </ul>
+        <div class="somethingElse">Example UNO</div>
+        <div class="somethingElse">Example DOS</div>
+        <div class="somethingElse">Example TRES</div>
+        <div>
+            <div class="somethingElseUno">SubExample uno</div>
+            <div class="somethingElseDos">SubExample dos</div> 
+            <p>Primer Parrafo</p>
+            <p>Segundo Parrafo</p>
+            <p>Tercer Parrafo</p>
+        </div>
+    </div>
+    <script>
+
+        //Accesing element by ID
+        /*console.log("--Accesing element by ID");
+        id_two = document.getElementById("two");
+        console.log(id_two);
+        id_four=document.getElementById("four");
+        console.log(id_four);*/
+       
+        // Accesing elements by tag name
+        /*console.log("--Accesing elements by tag name");
+        tagDiv = document.getElementsByTagName("div");
+        console.log(tagDiv);
+        console.log("We can acces using item() method to acces them by index, like this: ");
+        tagDivMethodIndex = document.getElementsByTagName("div").item(1);
+        console.log(tagDivMethodIndex);
+        console.log("We can acces using Name() method to acces them by index, like this: ");
+        tagDivMethodName = document.getElementsByTagName("h1");
+        console.log(tagDivMethodName); */
+
+        //Accesing elements by class name 
+        /*console.log("CLASS NAME")
+        console.log(document.getElementsByClassName("Example"));
+         somethigELse = document.getElementsByClassName("somethingElse");
+         console.log(somethigELse);*/
+        
+         //Accesing elements with a CSS selector
+        //console.log(document.querySelectorAll("p"));
+        
+
+        //Using querySelector()
+        //console.log(document.querySelector(".something"));
+
+
+        //Usinq querySelectorAll()
+       let exampleArraySelectorAll = document.querySelectorAll("div");
+        exampleArraySelectorAll.forEach( (element, index) => {
+            console.log(index,"\t",element)
+       });
+
+</script>
 </body>
 </html>
