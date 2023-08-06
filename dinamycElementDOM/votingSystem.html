@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting System</title>
+</head>
+<body>
+
+    <div id="message">JavaScript Course</div>
+    <br>
+    <div>
+        <input type="text" id="addFriend" />
+        <input type="button" id="addNew" value="Add Friend" />
+    </div>
+    <br>
+    <table id="output"></table>
+
+    <!--CODE-->
+    <script>
+        let myArray = ['Laurence','Mike','John','Larry','Maaike'];
+        let mensaje = document.getElementById("message");
+        let friend = document.getElementById("addFriend");
+        let button = document.getElementById("addNew");
+        let tabla = document.getElementById("output");
+    
+        window.onload = build;    
+        button.addEventListener("click",theFriends)
+        
+        // FUNCTIONS 
+        function theFriends(){
+            let name = friend.value
+            main(name,myArray.length,0); 
+            myArray.push(name)
+        }
+
+        function build() {
+            myArray.forEach((item, index) => {
+                main(item, index, 0);
+            })
+        } 
+        
+        function main(name, index, counter){
+            let tableRow = document.createElement("tr");
+            let cell1 = document.createElement("td");
+            let cell2 = document.createElement("td");
+            let cell3 = document.createElement("td");
+            
+            cell1.textContent = index + 1
+            cell2.textContent = name
+            cell3.textContent = counter
+            
+            tableRow.append(cell1);
+            tableRow.append(cell2);
+            tableRow.append(cell3);
+
+
+            tableRow.addEventListener("click", () => {
+                                            //childNode || lastChild
+                let valor = Number(tableRow.childNodes[2].textContent);
+                valor++;
+                console.log(valor);
+                tableRow.childNodes[2].textContent = valor;
+            });
+
+            tabla.appendChild(tableRow);
+
+        }
+        
+    </script>
+
+</body>
+
+</html>
