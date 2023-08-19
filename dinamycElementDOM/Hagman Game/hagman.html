@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hagman Game</title>
+
+    <style>
+        .gameArea {
+            text-align: center;
+            font-size: 2em;
+        }
+        .box,
+        .boxD{
+            display: inline-block;
+            padding: 5px;
+        }
+        .boxE{
+            display: inline-block;
+            width: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.5em;
+        
+        }
+    </style>
+</head>
+<body>
+    <div class="gameArea">
+        <div class="score"></div>
+        <div class="puzzle"></div>
+        <div class="letters"></div>
+        <button>Start Game</button>
+    </div>
+
+    <script>
+        let words = ["mochila", "programacion", "motor", "muñeca", "emerald", "mama", "papa", "bicicleta"];
+        let gameObject = {curr: "", solution: "", puzz: [], total: 0};
+
+        let gameArea = document.querySelector(".gameArea");
+        let score = document.querySelector(".score");
+        let puzzle = document.querySelector(".puzzle");
+        let letters = document.querySelector(".letters");
+        let boton = document.getElementsByTagName("button");
+
+        boton[0].addEventListener("click", startGame);
+        
+        function startGame(){
+            if(words.length > 0){
+                boton[0].style = "none";
+                gameObject.puzz = [];
+                gameObject.total = 0;
+                gameObject.curr = words.shift();
+                gameObject.solution = gameObject.curr.split("");
+                builder();
+            }else{
+                score.textContent = "No more Words."
+            }
+        }
+
+        function generatePageElements({element, parent, output, classE}){
+            const tempVariable = document.createElement(element);
+            tempVariable.classList.add(classE);
+            parent.append(tempVariable);
+            tempVariable.textContent = output;
+            return tempVariable;
+        }
+
+        function builder(){
+            letters.innerHTML = "";
+            puzzle.innerHTML = "";
+
+            gameObject.solution.forEach( (element) => {
+                let div = generatePageElements({element:"div", parent:puzzle, output:"-", classE:"boxE"})
+                if(element = ""){
+                    element.textContent = "";
+                    element.style.borderColor = "white";
+                }{
+                    gameObject.total ++;
+                }
+                gameObject.puzz.push(div);
+                updateScore();
+            });
+            
+            for (let i=0; i < 26; i++){
+                let alphabet = String.fromCharCode(65+i);
+                let div = generatePageElements({element:"div", parent:letters, output:alphabet, classE:"box"});
+                let checker = function(e){
+                    div.classList.remove("box");
+                    div.classList.add("boxD");
+                    div.removeEventListener("click",checker);
+                    div.style.backgroundColor="#ddd";
+                    checkLetter(alphabet);
+                }
+                div.addEventListener("click",checker);
+            }
+        }
+
+        function checkLetter(letter){
+            gameObject.solution.forEach((value, index) => {
+                if (value.toUpperCase() === letter){
+                    gameObject.puzz[index].textContent = letter;
+                    gameObject.total--;
+                    updateScore();
+                }
+            });
+        }
+
+        function updateScore() {
+            score.textContent =  `Total letters Left : ${gameObject.total} `;
+            if(gameObject.total <= 0){
+                console.log("Game Over");
+                score.textContent = "Game Over";
+                boton[0].style.display = "block";
+            }
+        }
+        
+
+    </script>
+    
+</body>
+</html>
