@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Background Color</title>
+</head>
+<body>
+    <div class="element"> 
+    </div>
+
+    <script>
+       let element = document.getElementsByClassName("element")
+        element[0].innerText = "Hello World"
+        element[0].style.width = "400px"
+        element[0].style.height = "400px"
+        element[0].style.backgroundColor = "yellow"
+        element[0].style.display  = "flex"
+        element[0].style.alingItems  = "center"
+        element[0].style.justifyContent = "center"
+
+        window.onload = function () {
+            element[0].addEventListener("mousedown", function () { handle("red", this); });
+            element[0].addEventListener("mouseover", function () { handle("yellow", this);} );
+            element[0].addEventListener("mouseout", function () { handle("blue", this); });
+            element[0].addEventListener("mouseup", function () { handle("black", this); });
+        }
+
+        function handle(color, event){
+            console.log(color);
+            console.log(event);
+        }
+
+    </script>
+
+</body>
+</html>

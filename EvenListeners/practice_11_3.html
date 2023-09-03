@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TEST JS</h1>
+    <h3>Onload Event Handler <p>Check the console</p></h3>
+</body>
+<script>
+    
+    document.addEventListener("DOMContentLoaded", (e) => {
+        message({ value: "Document Ready", event: e });
+    });
+
+    window.onload = function (e){
+        message({value: "Window Ready", event: e});
+    }
+    
+    function message({value, event}){
+        console.log(`VALUE: ${value}, EVENTO: ${event.type}`);
+        console.log(event)
+    }
+
+</script>
+</html>
