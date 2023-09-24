@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise 11.5</title>
+</head>
+<body>
+    <div class="output"></div>
+    <input type="text" name="message" placeholder="Your Message" >
+    <button class="btn1" onclick="captureObject(this)" >Button 1</button>
+    <button class="btn2" onclick="captureObject(this)" >Button 2</button>
+    <div>
+        <button class="btn3">Log</button>
+    </div>
+
+    <script>
+        let output = document.querySelector(".output");
+        let texto = document.getElementsByTagName("input");
+        let boton1 = document.querySelector(".btn1");
+        let boton2 = document.querySelector(".btn2");
+        let boton3 = document.querySelector(".btn3");
+    
+        let log = []
+        
+        function captureObject(e){
+            let object = {
+                "value": texto[0].value,
+                "event": event.target,
+                "class": e.className,
+                "tag": e.tagName
+            }
+            log.push(object);
+            logging();
+            attach();
+            texto[0].value = "";
+        }
+
+        function logging(){
+            let valorAgregado = log[log.length -1]
+            let texto2 = `Value: ${texto[0].value}\n
+                         Evento: ${valorAgregado.event}\n
+                         Class: ${valorAgregado.class}\n
+                         Tag: ${valorAgregado.tag}`
+             output.innerText = texto2     
+        }
+
+        function attach(){
+            console.log(log);
+        }
+    
+    </script>
+
+</body>
+</html>
