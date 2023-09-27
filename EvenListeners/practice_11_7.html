@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onchange and Onblur Practice 7</title>
+</head>
+<body>
+    <div class="output1">
+    </div>
+    <input type="text" placeholder="First Name" name="first">
+    <input type="text" placeholder="Last Name" name="last">
+<script>
+    const output = document.querySelector(".output1");
+
+    const firstName = document.querySelector("input[name='first']");
+    const lastName = document.querySelector("input[name='last']");
+
+    //Change
+    firstName.addEventListener("change",(e)=>{console.log("change"); update(firstName.value);});
+    lastName.addEventListener("change",(e)=>{console.log("change"); update(lastName.value); });
+
+    //Focus
+    firstName.addEventListener("focus",(e)=>{console.log("focus") });
+    lastName.addEventListener("focus",(e)=>{console.log("focus")});
+
+    //Onblur
+    firstName.addEventListener("blur",(e)=>{console.log("blur")});
+    lastName.addEventListener("blur",(e)=>{console.log("blur")});
+
+    //Update the text the output target
+    function update (str) {
+        output.textContent = str
+    };
+
+</script>
+
+</body>
+</html>
