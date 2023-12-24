@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calification Start</title>
+    <style>
+        .starA{
+            position: relative;
+
+            display: inline-block;
+            width: 0;
+            height: 0;
+
+            margin-left: .9em;
+            margin-right: .9em;
+            margin-bottom: 1.2em;
+
+            border-right: .3em solid transparent ;
+            border-bottom: .7em solid #FC0;
+            border-left: .3em solid transparent;
+
+            font-size: 50px;
+        }
+        
+        .starA:before, .starA:after {
+                content: '';
+                
+                display: block;
+                width: 0;
+                height: 0;
+                
+                position: absolute;
+                top: .6em;
+                left: -1em;
+            
+                border-right:  1em solid transparent;
+                border-bottom: .7em  solid #FC0;
+                border-left:   1em solid transparent;
+            
+                transform: rotate(-35deg);
+            }
+            
+            .starA:after {  
+                transform: rotate(35deg);
+            }
+
+        .starB{
+            position: relative;
+
+            display: inline-block;
+            width: 0;
+            height: 0;
+
+            margin-left: .9em;
+            margin-right: .9em;
+            margin-bottom: 1.2em;
+
+            border-right: .3em solid transparent ;
+            border-bottom: .7em solid black;
+            border-left: .3em solid transparent;
+
+            font-size: 50px;
+        }
+        
+        .starB:before, .starB:after {
+                content: '';
+                
+                display: block;
+                width: 0;
+                height: 0;
+                
+                position: absolute;
+                top: .6em;
+                left: -1em;
+            
+                border-right:  1em solid transparent;
+                border-bottom: .7em  solid black;
+                border-left:   1em solid transparent;
+            
+                transform: rotate(-35deg);
+            }
+            
+            .starB:after {  
+                transform: rotate(35deg);
+            }
+
+    </style>
+</head>
+<body>
+    <div id="initial"></div>
+    <script>
+        let divInitial = document.getElementById("initial");
+        for(let i = 0; i < 5; i++){ 
+            let divStar = document.createElement("div");
+            divStar.classList.add("estrella");
+            divStar.classList.add("starB");
+            divInitial.append(divStar);
+        }
+        
+        let star = document.querySelectorAll(".estrella")
+        console.log(star);
+        for(let i = 0; i < star.length; i++){
+            let index = i 
+            star[i].addEventListener("click",(event) => something(event, index, star));
+        }
+
+        function something(event, index, star){
+            paintBlackStar(event, index, star);
+            paintYellowStar(event, index, star);
+        }
+
+        function paintBlackStar(event, index, star){
+            //REMOVE STAR A
+            star[0].classList.remove("starA")
+            star[1].classList.remove("starA")
+            star[2].classList.remove("starA")
+            star[3].classList.remove("starA")
+            star[4].classList.remove("starA")
+       
+            //ADD STAR B
+            star[0].classList.add("starB")
+            star[1].classList.add("starB")
+            star[2].classList.add("starB")
+            star[3].classList.add("starB")
+            star[4].classList.add("starB")
+        }
+
+        function paintYellowStar(event, index, star){
+                switch (index) {
+                case 0:
+                    star[0].classList.remove("starB")
+
+                    star[0].classList.add("starA")
+                    break;
+                case 1:
+                    star[0].classList.remove("starB")
+                    star[1].classList.remove("starB")
+
+                    star[0].classList.add("starA")
+                    star[1].classList.add("starA")
+                    break;
+                case 2:
+                    star[0].classList.remove("starB")
+                    star[1].classList.remove("starB")
+                    star[2].classList.remove("starB")
+
+                    star[0].classList.add("starA")
+                    star[1].classList.add("starA")
+                    star[2].classList.add("starA")
+                    break;
+                case 3:
+                    star[0].classList.remove("starB")
+                    star[1].classList.remove("starB")
+                    star[2].classList.remove("starB")
+                    star[3].classList.remove("starB")
+
+                    star[0].classList.add("starA")
+                    star[1].classList.add("starA")
+                    star[2].classList.add("starA")
+                    star[3].classList.add("starA")
+                    break;
+                case 4:
+                    star[0].classList.remove("starB")
+                    star[1].classList.remove("starB")
+                    star[2].classList.remove("starB")
+                    star[3].classList.remove("starB")
+                    star[4].classList.remove("starB")
+                    
+                    star[0].classList.add("starA")
+                    star[1].classList.add("starA")
+                    star[2].classList.add("starA")
+                    star[3].classList.add("starA")
+                    star[4].classList.add("starA")
+                    break;                
+            }
+        }
+
+    </script>
+</body>
+</html>
